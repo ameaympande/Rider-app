@@ -1,97 +1,123 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Rider Companion 🏍️
 
-# Getting Started
+A premium, high-performance mobile application designed for motorcycle enthusiasts and group riding communities. **Rider Companion** provides real-time convoy tracking, emergency SOS features, and comprehensive profile management with a sleek, HITCH-inspired dark aesthetic.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+![Status](https://img.shields.io/badge/Status-Production--Ready-brightgreen)
+![React Native](https://img.shields.io/badge/React--Native-0.85.3-61DAFB?logo=react)
+![Theme](https://img.shields.io/badge/Theme-Premium--Dark-A8FF00)
 
-## Step 1: Start Metro
+---
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+## ✨ Key Features
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+### 📡 Group Riding & Convoys
+- **Real-time Live HUD**: Track all convoy members on a synchronized map with live speed and heading updates.
+- **Dynamic Join/Create**: Quickly spin up a "Morning Ride" or join an existing convoy using a secure 6-digit invite code.
+- **Launch Map**: Instantly switch between the ride room and a full-screen interactive live map.
 
-```sh
-# Using npm
-npm start
+### 🚨 Safety & Reliability
+- **Instant SOS**: Broadcast an emergency alert to all convoy members with one tap.
+- **Live Connection Sync**: Powered by Socket.IO for sub-second location updates and real-time member status.
+- **Battery & Signal Optimization**: Throttled tracking logic to preserve device battery during long rides.
 
-# OR using Yarn
-yarn start
+### 👤 Profile & Personalization
+- **Modern Onboarding**: Seamless first-time experience to set up your name, bike model, and riding experience.
+- **My Garage**: Track your collection of bikes (Coming Soon).
+- **Safety Settings**: Manage emergency contacts and SOS preferences.
+- **HITCH Aesthetic**: High-contrast Neon Green on Deep Slate background for maximum visibility during day or night rides.
+
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend**: React Native (0.85.3)
+- **Navigation**: React Navigation (Stack & Drawer)
+- **State Management**: Zustand (with Persist middleware)
+- **API Handling**: TanStack React Query (v5) + Axios
+- **Real-time**: Socket.IO-Client
+- **Maps**: React Native Maps (Apple Maps/Google Maps)
+- **Icons**: Lucide React Native
+- **Storage**: MMKV (High-performance storage)
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js (v22+)
+- React Native Environment (Xcode for iOS / Android Studio for Android)
+- [Rider App Backend](https://github.com/ameaympande/Rider-app-backend) running locally or hosted.
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone git@github.com:ameaympande/Rider-app.git
+   cd Rider-app
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Install iOS Pods**
+   ```bash
+   cd ios && pod install && cd ..
+   ```
+
+4. **Configure API**
+   Edit `src/constants/config.ts` to point to your backend URL:
+   ```typescript
+   export const appConfig = {
+     apiBaseUrl: 'http://localhost:3000', // Update for physical devices
+     socketUrl: 'http://localhost:3000',
+   };
+   ```
+
+5. **Run the App**
+   ```bash
+   # iOS
+   npm run ios
+
+   # Android
+   npm run android
+   ```
+
+---
+
+## 📁 Project Structure
+
+```
+src/
+├── components/     # Reusable UI (Buttons, Cards, Layouts)
+├── constants/      # App-wide configurations
+├── hooks/          # Custom React hooks (useTracking, etc.)
+├── maps/           # Specialized Map components
+├── navigation/     # Stack & Drawer navigators
+├── screens/        # Full-page screens (Auth, Home, Ride)
+├── services/       # API and Socket clients
+├── store/          # Zustand state stores
+├── theme/          # HITCH design tokens (Colors, Spacing)
+└── types/          # TypeScript interfaces
 ```
 
-## Step 2: Build and run your app
+---
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+## 🤝 Contributing
 
-### Android
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-```sh
-# Using npm
-npm run android
+---
 
-# OR using Yarn
-yarn android
-```
+## 📄 License
 
-### iOS
+Distributed under the MIT License.
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
+---
 
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
-```
-
-Then, and every time you update your native dependencies, run:
-
-```sh
-bundle exec pod install
-```
-
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
-
-```sh
-# Using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
-```
-
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
-
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
-
-## Step 3: Modify your app
-
-Now that you have successfully run the app, let's make changes!
-
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
-
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
-
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+**Built with ❤️ for the Riding Community.**
