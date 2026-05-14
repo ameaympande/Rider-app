@@ -119,5 +119,4 @@ src/
 Distributed under the MIT License.
 
 ---
-
 **Built with ❤️ for the Riding Community.**
